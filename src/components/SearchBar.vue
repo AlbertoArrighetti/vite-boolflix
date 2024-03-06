@@ -37,7 +37,7 @@ export default {
     position: fixed;
 
     width: 100%;
-    height: 70px;
+    height: $searchBarHeight;
 
     background-color: black;
 

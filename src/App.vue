@@ -4,14 +4,14 @@ import axios from 'axios';
 // store
 import { store } from './store.js';
 
-
-
 // components
 import SearchBar from './components/SearchBar.vue';
+import FilmList from './components/FilmList.vue'
 
 export default {
   components: {
     SearchBar,
+    FilmList,
   },
 
   data() {
@@ -29,6 +29,8 @@ export default {
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${store.searchMovie}`)
     .then((res) => {
       console.log(res.data.results)
+
+      this.store.searchedMovieArray = res.data.results
     });
     }
   },
@@ -44,6 +46,7 @@ export default {
 
 <template>
     <SearchBar @search="listOfMovies()"></SearchBar>
+    <FilmList></FilmList>
 </template>
 
 <style lang="scss">

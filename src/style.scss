@@ -1,3 +1,6 @@
+@use '/src/styles/variables' as *;
+
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -25,4 +28,19 @@
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+
+
+
+.card {
+    display: flex;
+    flex-flow: column;
+
+    width: calc(100% / 5 - $filmListGap / 5 * 4);
+
+}
+.flags {
+    width: 24px;
+    height: 18px;
 }

@@ -15,7 +15,7 @@ export default {
 <template>
     <nav id="navBar">
         <div class="logo">
-            boolflix
+            <img src="/public/img/logo.png" alt="Logo">
         </div>
 
         <div class="search">

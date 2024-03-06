@@ -20,16 +20,24 @@ export default {
 
       // get the key from
       //  https://www.themoviedb.org/settings/api
-      apiKey: '',
+      apiKey: 'bb6ee0f46884a8553f28248b1f5f541a',
     }
   },
   
   methods: {
     listOfMovies() {
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${store.searchMovie}`)
-    .then((res) => {
-      this.store.searchedMovieArray = res.data.results;
-    });
+      .then((res) => {
+        this.store.searchedMovieArray = res.data.results;
+      });
+    },
+
+    listOfTvSeries() {
+      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${store.searchMovie}`)
+      .then((res) => {
+        
+        this.store.searchTvSeriesArray = res.data.results;
+      });
     },
 
     
@@ -40,7 +48,7 @@ export default {
 
 
 <template>
-    <SearchBar @search="listOfMovies()"></SearchBar>
+    <SearchBar @search="listOfMovies(), listOfTvSeries()"></SearchBar>
     <FilmList></FilmList>
 </template>
 

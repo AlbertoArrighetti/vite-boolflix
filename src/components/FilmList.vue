@@ -1,6 +1,8 @@
 <script>
 import {store} from '../store.js';
 
+import FilmCardItem from './items/FilmCardItem.vue';
+
 export default {
     name: 'FilmList',
 
@@ -9,23 +11,30 @@ export default {
             store,
         }
     },
+
+    components: {
+        FilmCardItem,
+    },
 }
 </script>
 <template>
     <main>
         <div class="container">
             <div class="filmWrapper">
-                <ul v-for="currentFilm in store.searchedMovieArray">
-                    <li>{{ currentFilm.title }}</li>
-                    <li>{{ currentFilm.original_title }}</li>
-                    <li>{{ currentFilm.original_language }}</li>
-                    <li>{{ currentFilm.vote_average }}</li>
+                <ul>
+                <FilmCardItem 
+                    v-for="currentFilm in store.searchedMovieArray" 
+                    :card="currentFilm"
+                >
+                
+                </FilmCardItem>
                 </ul>
             </div>
         </div>
     </main>
 </template>
 <style lang="scss">
+
 @use '../styles/variables' as *;
 
 main {

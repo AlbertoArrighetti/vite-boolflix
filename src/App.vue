@@ -4,40 +4,46 @@ import axios from 'axios';
 // store
 import { store } from './store.js';
 
+
+
+// components
+import SearchBar from './components/SearchBar.vue';
+
 export default {
   components: {
-
+    SearchBar,
   },
 
   data() {
     return {
       store,
 
+      // get the key from
+      //  https://www.themoviedb.org/settings/api
       apiKey: '',
     }
   },
   
   methods: {
-    
-  },
-
-  created() {
-
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=Ritorno al futuro`)
+    listOfMovies() {
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${store.searchMovie}`)
     .then((res) => {
       console.log(res.data.results)
     });
+    }
+  },
+
+  created() {
+    
+    
     
   },
 }
 </script>
 
+
 <template>
-
-<div>
-  <h1>ciao</h1>
-</div>
-
+    <SearchBar @search="listOfMovies()"></SearchBar>
 </template>
 
 <style lang="scss">

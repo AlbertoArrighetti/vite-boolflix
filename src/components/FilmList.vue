@@ -27,7 +27,6 @@ export default {
                             v-for="currentFilm in store.searchedMovieArray" 
                             :card="currentFilm"
                         >
-                        
                         </FilmCardItem>
                 
                 </ul>
@@ -47,7 +46,7 @@ main {
     .filmWrapper {
         margin-top: 40px;
 
-        
+
         .filmList {
             list-style-type: none;
     

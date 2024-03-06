@@ -2,7 +2,7 @@
 // import axios
 import axios from 'axios';
 // store
-import { store } from './store.js';
+import { store } from './store';
 
 // components
 import SearchBar from './components/SearchBar.vue';
@@ -30,14 +30,11 @@ export default {
     .then((res) => {
       this.store.searchedMovieArray = res.data.results;
     });
-    }
+    },
+
+    
   },
 
-  created() {
-    
-    
-    
-  },
 }
 </script>
 

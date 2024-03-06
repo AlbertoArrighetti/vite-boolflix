@@ -1,10 +1,23 @@
 <script>
+
 export default {
     name: 'FilmCardItem',
 
     props: {
         card: Object,
     },
+
+    methods: {
+        getFlags(lg) {
+            if (lg == 'en') {
+                return `https://flagcdn.com/us.svg`
+            }else if (lg == 'ja'){
+                return `https://flagcdn.com/jp.svg`
+            }
+            return `https://flagcdn.com/${lg}.svg`
+        }
+    }
+
 }
 </script>
 
@@ -12,10 +25,16 @@ export default {
 
 <!-- stilizzazione cards -->
     <li class="card">
-        <div><span>Titolo</span> : {{card.title}}</div>
-        <div><span>Titolo Originale</span> : {{card.original_title}}</div>
-        <div><span>Lingua Originale</span> : {{card.original_language}}</div>
-        <div><span>Voto</span> : {{card.vote_average}}</div>
+        <div>{{card.title}}</div>
+        <div>{{card.original_title}}</div>
+
+
+
+        <img :src="getFlags(card.original_language)" :alt="card.original_language">
+
+
+
+        <div>{{card.vote_average}}</div>
     </li>
 
 </template>
@@ -27,10 +46,11 @@ export default {
     display: flex;
     flex-flow: column;
 
-    width: calc(100% / 4 - $filmListGap / 4 * 3);
+    width: calc(100% / 5 - $filmListGap / 5 * 4);
 
-    span {
-        color: $primaryColor;
+    img {
+        width: 24px;
+        height: 18px;
     }
 }
 

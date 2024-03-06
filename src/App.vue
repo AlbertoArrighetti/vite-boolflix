@@ -28,9 +28,7 @@ export default {
     listOfMovies() {
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${store.searchMovie}`)
     .then((res) => {
-      console.log(res.data.results)
-
-      this.store.searchedMovieArray = res.data.results
+      this.store.searchedMovieArray = res.data.results;
     });
     }
   },
@@ -51,10 +49,4 @@ export default {
 
 <style lang="scss">
 
-div {
-
-  h1 {
-    color: red;
-  }
-}
 </style>

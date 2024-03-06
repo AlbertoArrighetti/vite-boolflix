@@ -42,7 +42,7 @@ export default {
     background-color: black;
 
     .logo {
-        color: $titleAndBtn;
+        color: $primaryColor;
         font-size: 1.5em;
         text-transform: uppercase;
     }
@@ -57,8 +57,8 @@ export default {
         }
         .searchBtn {
             padding: 4px 8px;
-            background-color: $titleAndBtn;
-            border: 1px solid $titleAndBtn;
+            background-color: $primaryColor;
+            border: 1px solid $primaryColor;
             border-radius: 6px;
         }
     }

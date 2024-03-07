@@ -1,8 +1,7 @@
 <script>
 import {store} from '../store.js';
 
-import FilmCardItem from './items/FilmCardItem.vue';
-import TvSeriesItem from './items/TvSeriesItem.vue'
+import CardItem from './items/CardItem.vue';
 
 export default {
     name: 'FilmList',
@@ -14,8 +13,11 @@ export default {
     },
 
     components: {
-        FilmCardItem,
-        TvSeriesItem,
+        CardItem,
+    },
+
+    methods: {
+        
     },
 }
 </script>
@@ -25,27 +27,26 @@ export default {
             <div class="wrapper">
                 <div class="list">
 
-
-                    <h2>Films</h2>
+                    <h2 :class="store.searchedMovieArray == 0 ? '' : 'noShow' ">Cerca un Film o una Serie</h2>
+                    
+                    <h2 class="post-search-txt" :class="store.searchedMovieArray == 0 ? 'noShow' : '' ">Films</h2>
 
                     <ul class="film_list">
-                        <FilmCardItem 
+                        <CardItem 
                         v-for="currentFilm in store.searchedMovieArray" 
                         :filmCard="currentFilm"
                         >
-
-                        </FilmCardItem>
+                        </CardItem>
                     </ul>
 
-                    <h2>Tv Series</h2>
+                    <h2 class="post-search-txt" :class="store.searchedMovieArray == 0 ? 'noShow' : '' ">Tv Series</h2>
 
                     <ul class="series_list">
-                        <TvSeriesItem
-                        v-for="currentSeries in store.searchTvSeriesArray"
-                        :TvCard="currentSeries"
+                        <CardItem 
+                        v-for="currentSeries in store.searchTvSeriesArray" 
+                        :filmCard="currentSeries"
                         >
-                        </TvSeriesItem>
-                        
+                        </CardItem>
                     </ul>
                     
 
@@ -70,10 +71,15 @@ main {
 
         .list {
             h2 {
+                text-align: center;
+            }
+            .post-search-txt {
                 color: $primaryColor;
                 margin: 20px 0;
                 text-transform: uppercase;
+
             }
+            
         }
         .film_list, .series_list {
             list-style-type: none;

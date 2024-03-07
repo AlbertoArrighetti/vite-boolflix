@@ -56,4 +56,5 @@ export const store = reactive({
 
         return (5 - res)
     },
+
 });

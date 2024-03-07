@@ -7,13 +7,36 @@ export const store = reactive({
 
     // funzione per filtrare le bandiere
     getFlags(lg) {
-        if (lg == 'en') {
-            return 'https://flagcdn.com/us.svg';
-        } else if (lg == 'ja') {
-            return 'https://flagcdn.com/jp.svg';
+        let flagUrl;
+      
+        // qui visualizzo tutte le casistiche in cui non trova la mia immagine
+        switch (lg) {
+        // es: se lg è en diventa flagUrl
+            case 'en':
+                flagUrl = 'https://flagcdn.com/us.svg';
+            break;
+            case 'ja':
+                flagUrl = 'https://flagcdn.com/jp.svg';
+            break;
+            case 'zh':
+                flagUrl = 'https://flagcdn.com/cn.svg';
+            break;
+            case 'cs':
+                flagUrl = 'https://flagcdn.com/cz.svg';
+            break;
+            case 'ko':
+                flagUrl = 'https://flagcdn.com/kr.svg';
+            break;
+            case 'hi':
+                flagUrl = 'https://flagcdn.com/in.svg';
+            break;
+        
+          default:
+            flagUrl = `https://flagcdn.com/${lg}.svg`;
         }
-        return `https://flagcdn.com/${lg}.svg`;
-    },
+      
+        return flagUrl;
+      },
 
     // visualizzazione poster
     imgUrl:'https://image.tmdb.org/t/p/w342/',

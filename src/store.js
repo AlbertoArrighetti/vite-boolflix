@@ -38,12 +38,22 @@ export const store = reactive({
         return flagUrl;
       },
 
+
+      
     // visualizzazione poster
     imgUrl:'https://image.tmdb.org/t/p/w342/',
 
 
-    // voto da 1 a 5
+
+    // voto da 1 a 5 in stelle 
     vote(value) {
         return Math.round(value / 2);
+    },
+
+    // differenza
+    voteDifference(value) {
+        let res = Math.round(value / 2);
+
+        return (5 - res)
     },
 });

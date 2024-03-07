@@ -12,8 +12,6 @@ export default {
             store,
         }
     },
-
-
 }
 </script>
 
@@ -32,8 +30,9 @@ export default {
             <div v-for="stars in store.vote(filmCard.vote_average)">
                 <i class="fa-solid fa-star"></i>
             </div>
+            <div v-for="emptyStars in store.voteDifference(filmCard.vote_average)">
+                <i class="fa-regular fa-star"></i>
+            </div>
         </div>
-            
     </li>
-
 </template>

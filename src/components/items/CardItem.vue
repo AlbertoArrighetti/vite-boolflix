@@ -37,23 +37,32 @@ export default {
     <li class="card">
         <div class="poster">
             <img class="poster_img" :src="filmCard.poster_path == null ? '/public/img/posterNotFound.png' : store.imgUrl + filmCard.poster_path " :alt="filmCard.name">
-        </div>
-    
-        <div>{{ getTitle() }}</div>
-        <div>{{ getOriginalTitle() }}</div>
 
-        <img class="flags" :src="store.getFlags(filmCard.original_language)" :alt="filmCard.original_language">
+            <div class="cardDescription">
+                <div class="title">{{ getTitle() }}</div>
+                <div class="original_title">{{ getOriginalTitle() }}</div>
+        
+                <div>
+                    <img class="flags" :src="store.getFlags(filmCard.original_language)" :alt="filmCard.original_language">
+                </div>
+        
+                <div class="star_container">
+        
+                    <!-- WIP -->
+                    <div v-for="stars in store.vote(filmCard.vote_average)">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div v-for="emptyStars in store.voteDifference(filmCard.vote_average)">
+                        <i class="fa-regular fa-star"></i>
+                    </div>
 
-        <div class="star_container">
+                </div>
+
+                <div class="desc">{{ filmCard.overview }}</div>
 
 
-            <!-- WIP -->
-            <div v-for="stars in store.vote(filmCard.vote_average)">
-                <i class="fa-solid fa-star"></i>
             </div>
-            <div v-for="emptyStars in store.voteDifference(filmCard.vote_average)">
-                <i class="fa-regular fa-star"></i>
-            </div>
+
 
 
         </div>
@@ -62,34 +71,74 @@ export default {
 
 <style lang="scss">
 
+@use '/src/styles/variables' as *;
+
 // stilizzazione cards
 
 .card {
     display: flex;
     flex-flow: column;
-
     width: calc(100% / 5);
 
-    .flags {
-        width: 24px;
-        height: 18px;
+    .poster {
+        position: relative;
+        border: 1px solid rgb(225, 225, 225);
+        background-color: black;
+
+        .poster_img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+
+            transition: 0.5s ease;
+        }
+        &:hover .poster_img {
+               opacity: 0;
+        }
+        &:hover .cardDescription {
+            display: block;
+            width: 100%;
+        }
     }
 
-    .poster_img {
-      width: 100%;
-      height: 370px;
-      object-fit: cover;
-      object-position: top;
+    .cardDescription {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
 
-      border: 3px solid black;
+        display: none;
+        .title {
+            font-weight: bold;
+            padding: 10px 10px 0;
+        }
+        .original_title {
+            margin-bottom: 6px;
+            color: $primaryColor;
+            font-weight: bold;
+            font-size: 0.7em;
+        }
+        .flags {
+            width: 24px;
+            height: 18px;
+        }
+        .star_container {
+          display: flex;
+          justify-content: center;
+    
+          .fa-star {
+            color: #f7c209;
+          }
+        }
+        .desc {
+            font-size: 10px;
+            padding: 0 10px 10px;
+        }
     }
-
-    .star_container {
-      display: flex;
-
-      .fa-star {
-        color: #f7c209;
-      }
+    .cardDescription > *{
+        text-align: center;
     }
 }
 </style>

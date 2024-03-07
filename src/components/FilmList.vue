@@ -77,7 +77,7 @@ main {
                 color: $primaryColor;
                 margin: 20px 0;
                 text-transform: uppercase;
-
+                text-align: start;
             }
             
         }

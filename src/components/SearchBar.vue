@@ -49,12 +49,13 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
     position: fixed;
+    z-index: 5;
 
     width: 100%;
     height: $searchBarHeight;
-
+    
+    padding: 20px 30px;
     background-color: black;
 
     .links_wrapper {
@@ -73,6 +74,7 @@ export default {
                 font-size: 12px;
                 &:hover {
                     opacity: 1;
+                    color: $primaryColor;
                 }
             }
         }

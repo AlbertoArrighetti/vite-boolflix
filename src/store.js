@@ -7,15 +7,14 @@ export const store = reactive({
 
     // funzione per filtrare le bandiere
     getFlags(lg) {
-        try {
-            if (lg == 'en') {
-                return 'https://flagcdn.com/us.svg';
-            } else if (lg == 'ja') {
-                return 'https://flagcdn.com/jp.svg';
-            }
-            return `https://flagcdn.com/${lg}.svg`;
-        } catch (err) {
-            return '/public/img/src_notfound.png';
+        if (lg == 'en') {
+            return 'https://flagcdn.com/us.svg';
+        } else if (lg == 'ja') {
+            return 'https://flagcdn.com/jp.svg';
         }
-    }
+        return `https://flagcdn.com/${lg}.svg`;
+    },
+
+    // visualizzazione poster
+    imgUrl:'https://image.tmdb.org/t/p/w342/',
 });

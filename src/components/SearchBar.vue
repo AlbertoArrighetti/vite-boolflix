@@ -7,6 +7,15 @@ export default {
     data() {
         return {
             store,
+
+            links: [
+                'Home',
+                'Serie TV',
+                'Film',
+                'Nuovi e popolari',
+                'La mia lista',
+                'Sfoglia per lingua'
+            ],
         }
     },
 }
@@ -14,9 +23,16 @@ export default {
 
 <template>
     <nav id="navBar">
-        <div class="logo">
-            <img src="/public/img/logo.png" alt="Logo">
+        <div class="links_wrapper">
+            <div class="logo">
+                <img src="/public/img/logo.png" alt="Logo">
+            </div>
+
+            <ul>
+                <li v-for="currentLink in links"> {{ currentLink }} </li>
+            </ul>
         </div>
+
 
         <div class="search">
             <input v-model="store.searchMovie" type="search" name="searchBar" id="searchBar" placeholder="Cerca">
@@ -41,10 +57,32 @@ export default {
 
     background-color: black;
 
+    .links_wrapper {
+        display: flex;
+        align-items: center;
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            list-style-type: none;
+
+            li {
+                opacity: 0.6;
+                cursor: pointer;
+                font-size: 12px;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
     .logo {
         color: $primaryColor;
         font-size: 1.5em;
         text-transform: uppercase;
+        padding: 10px 20px 0 0;
     }
     .search {
         display: flex;

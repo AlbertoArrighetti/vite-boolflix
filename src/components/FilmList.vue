@@ -80,7 +80,6 @@ main {
     
             display: flex;
             flex-flow: row wrap;
-            gap: $filmListGap;
         }
 
     }

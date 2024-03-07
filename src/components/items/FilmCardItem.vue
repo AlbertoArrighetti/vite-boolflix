@@ -28,7 +28,12 @@ export default {
 
         <img class="flags" :src="store.getFlags(filmCard.original_language)" :alt="filmCard.original_language">
 
-        <div>{{filmCard.vote_average}}</div>
+        <div class="star_container">
+            <div v-for="stars in store.vote(filmCard.vote_average)">
+                <i class="fa-solid fa-star"></i>
+            </div>
+        </div>
+            
     </li>
 
 </template>

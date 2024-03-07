@@ -40,4 +40,10 @@ export const store = reactive({
 
     // visualizzazione poster
     imgUrl:'https://image.tmdb.org/t/p/w342/',
+
+
+    // voto da 1 a 5
+    vote(value) {
+        return Math.round(value / 2);
+    },
 });

@@ -47,5 +47,13 @@
       object-fit: cover;
       object-position: top;
     }
+
+    .star_container {
+      display: flex;
+
+      .fa-star {
+        color: #f7c209;
+      }
+    }
 }
 

@@ -29,6 +29,7 @@ export default {
             </div>
 
             <ul>
+                <li class="ellipsis"><i class="fa-solid fa-ellipsis-vertical"></i></li>
                 <li v-for="currentLink in links"> {{ currentLink }} </li>
             </ul>
         </div>
@@ -44,6 +45,7 @@ export default {
 
 <style lang="scss">
 @use '../styles/variables' as *;
+@use '../styles/query' as *;
 
 #navBar {
     display: flex;
@@ -68,6 +70,11 @@ export default {
             gap: 16px;
             list-style-type: none;
 
+            .ellipsis {
+                display: none;
+                font-size: 1.3em;
+            }
+  
             li {
                 opacity: 0.6;
                 cursor: pointer;
@@ -85,6 +92,11 @@ export default {
         font-size: 1.5em;
         text-transform: uppercase;
         padding: 10px 20px 0 0;
+
+        img {
+            object-fit: contain;
+            width: 100%;
+        }
     }
     .search {
         display: flex;
@@ -94,6 +106,7 @@ export default {
         #searchBar {
             height: 24px;
             padding: 4px;
+
         }
         .searchBtn {
             padding: 4px 8px;
@@ -102,8 +115,8 @@ export default {
             border-radius: 6px;
         }
     }
-
-
+    @include navbarMediaQ;
 }
+
 
 </style>

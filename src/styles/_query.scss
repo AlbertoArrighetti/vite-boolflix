@@ -1,0 +1,51 @@
+@mixin navbarMediaQ {
+    @media screen and (max-width: 880px) {
+        .links_wrapper {
+            ul {
+                .ellipsis {
+                    display: block;
+                    padding-right: 10px;
+                }
+                li {
+                    display: none;
+                }
+                
+            }
+        }
+        .search {
+            #searchBar {
+                    max-width: 150px;
+                }
+        }
+    }     
+    @media screen and (max-width: 425px) {
+        .logo {
+            max-width: 100px;
+        }
+        .search {
+            #searchBar {
+                    max-width: 100px;
+                }
+        }
+    }  
+}
+
+
+@mixin cardMediaQ {
+    @media screen and (max-width: 1024px) {
+        .card {
+            width: calc(100% / 4);
+        }
+    }  
+    @media screen and (max-width: 768px) {
+        .card {
+            width: calc(100% / 3);
+        }
+    } 
+    @media screen and (max-width: 425px) {
+        .card {
+            width: 100%;
+            padding: 0 20px;
+        }
+    } 
+}

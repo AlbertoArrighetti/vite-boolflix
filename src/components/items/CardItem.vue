@@ -58,7 +58,7 @@ export default {
 
                 </div>
 
-                <div class="desc">{{ filmCard.overview }}</div>
+            <div class="desc">{{ filmCard.overview == "" ? 'No description found' : filmCard.overview }}</div>
 
 
             </div>
@@ -73,8 +73,9 @@ export default {
 
 @use '/src/styles/variables' as *;
 
-// stilizzazione cards
+@use '/src/styles/query.scss' as *;
 
+// stilizzazione cards
 .card {
     display: flex;
     flex-flow: column;
@@ -84,6 +85,7 @@ export default {
         position: relative;
         border: 1px solid rgb(225, 225, 225);
         background-color: black;
+        overflow-y: auto;
 
         .poster_img {
             width: 100%;
@@ -140,5 +142,7 @@ export default {
     .cardDescription > *{
         text-align: center;
     }
+
 }
+@include cardMediaQ;
 </style>
